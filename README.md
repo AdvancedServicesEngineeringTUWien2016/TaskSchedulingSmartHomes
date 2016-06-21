@@ -51,17 +51,17 @@ In order to run all individual services in docker containers, follow these instr
 
 1) Install docker
 2) Depending on your system configuration you may need to use "sudo" for all the following commands
-3) Run "sudo mvn clean install" inside the "Shared" project's folder
-4) Run "sudo mvn clean package docker:build" inside all other project folders
-5) After a successful build you can run "sudo docker images" to list all built docker images
+3) Run `sudo mvn clean install` inside the "Shared" project's folder
+4) Run `sudo mvn clean package docker:build` inside all other project folders
+5) After a successful build you can run `sudo docker images` to list all built docker images
 6) This should look like:
 
-CREATED             SIZE
+`CREATED             SIZE
 energypriceservice/energypriceservice             latest              619ef127287b        24 seconds ago      222.1 MB
 weatherdataservice/weatherdataservice             latest              95bed8a9eb67        3 minutes ago       220.9 MB
 energyproductionservice/energyproductionservice   latest              09e70bb33a05        3 minutes ago       222.1 MB
-analysis/analysis                                 latest              d7455793f4
+analysis/analysis                                 latest              d7455793f4`
 
-7) Now you can start each service using commands like "sudo docker run --rm --net=host -t energypriceservice/energypriceservice"
+7) Now you can start each service using commands like `sudo docker run --rm --net=host -t energypriceservice/energypriceservice`
 
 
