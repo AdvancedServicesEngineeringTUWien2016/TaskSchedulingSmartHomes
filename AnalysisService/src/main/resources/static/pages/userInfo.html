@@ -1,0 +1,109 @@
+
+	<div id="page-wrapper">
+		<div class="col-md-9">
+		    <div class="alert alert-danger" style="margin-bottom: 0px;" ng-show="$root.error"><strong>Error: </strong>{{$root.errorMessage}}</div>
+		    <div class="alert alert-info" style="margin-bottom: 0px;" ng-show="$root.info"><strong>Info: </strong>{{$root.infoMessage}}</div>
+		</div>
+	      <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Setup</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+            	
+               
+             
+               <div class="col-xs-6 .col-md-12">
+                   <div class="panel panel-success">
+                   
+                   	 <div class="panel-heading">
+                           <strong>User Information</strong>
+                       </div>
+                       <div class="panel-body">
+	                       <label>User Name</label>
+	                       <p>{{userInfo.username}}</p>
+	                       <p></p> 
+	                       <label>Latitude</label>  
+	                       <p>{{userInfo.latitude}}</p>
+	                       <p></p>
+	                       <label>Longitude</label>  
+	                       <p>{{userInfo.longitude}}</p>
+	                       <p></p>
+	                       <label>Home Automation Address</label>
+	                       <p>{{userInfo.homeautomationAddress}}</p>
+	                       <p></p> 
+	                       <p></p> 
+	                       <p></p> 
+	                       <label>Energy Production Address</label>
+	                       <p>{{userInfo.igPlusServiceAddress}}</p>
+	                       <p></p>       
+	                       <label>Energy Price Address</label>
+	                       <p>{{userInfo.energyPriceServiceAddress}}</p>
+	                       <p></p>  
+	                       <label>Weather Service Address</label>
+	                       <p>{{userInfo.weatherServiceAddress}}</p>
+	                       <p></p>                         
+                             
+                   		</div>
+               		
+                	</div>
+                           
+				</div>
+			  <div class="col-xs-6 .col-md-12">
+                 <div class="panel panel-success">
+	                  
+                 	 <div class="panel-heading">
+                         <strong>Battery</strong>
+                     </div>
+                     <div class="panel-body">
+	                       <label>Shared with User</label>
+	                       <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="u in userInfo.shared">
+                                            <td>{{u}}</td>
+                                   
+                                        </tr>
+          
+                                    </tbody>
+                                </table>
+                           </div>
+                           <p></p>
+	                      
+	                       <label>Max Capacity</label>  
+	                       <p>{{userInfo.battery.maxCapacity}} W</p>
+	                       <p></p>
+	                       <label>Current Capacity</label>  
+	                       <div class="progress progress-striped active">
+                               <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{number}}">
+                                   <span class="sr-only">40% Complete (success)</span>
+                               </div>
+                           </div>
+	                   
+	                       <p></p>
+	                       <label>Sum Energy bought</label>
+	                       <p>{{userInfo.battery.sumBuy}} W</p>
+	                       <p></p> 
+	                       <label>Sum Energy sold</label>
+	                       <p>{{userInfo.battery.sumSell}} W</p>
+	                       <p></p>       
+	                       <label>Spent</label>
+	                       <p>{{userInfo.battery.spent}} EUR</p>
+	                       <p></p>  
+	                       <label>Earned</label>
+	                       <p>{{userInfo.battery.earned}} EUR</p>
+	                       <p></p>            
+             		 </div>
+              	</div>
+	                          
+			</div>
+            
+    </div>
+    <!-- /#wrapper -->

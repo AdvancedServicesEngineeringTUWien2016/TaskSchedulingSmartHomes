@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+	<Properties>
+		<Property name="log-path">logs</Property>
+	</Properties>
+
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+		<RollingFile name="FileLog" fileName="${log-path}/all.log"
+			filePattern="${log-path}/all-%d{yyyy-MM-dd}.log" immediateFlush="false">
+			<PatternLayout>
+				<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		
+		<Root level="debug">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="FileLog" />
+		</Root>
+	</Loggers>
+	<logger name="com.atomikos" level="OFF"/>
+	
+</Configuration>

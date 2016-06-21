@@ -1,0 +1,88 @@
+       <div id="page-wrapper">
+        	<div class="col-md-9">
+			    <div class="alert alert-danger" style="margin-bottom: 0px;" ng-show="$root.error"><strong>Error: </strong>{{$root.errorMessage}}</div>
+			    <div class="alert alert-info" style="margin-bottom: 0px;" ng-show="$root.info"><strong>Info: </strong>{{$root.infoMessage}}</div>
+			</div>
+			       
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Tasks</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div>
+      			<button ng-show="showStart()" type="submit" class="btn btn-success" ng-click="startScheduling()">Start Scheduler</button>
+      			<button ng-show="showStart()" type="submit" class="btn btn-warning" ng-click="stopScheduling()">Stop Scheduler</button>
+   			</div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Tasks
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Task Name</th>
+                                            <th>Device Name</th>
+                                            <th>Duration (min)</th>
+                                            <th>Energy Usage (W/h for the whole task)</th>
+                                            <th>State</th>
+                                            <th>Started</th>
+                                            <th>Planned Start Time</th>
+                                            <th>Planned Finish Time</th>
+                                         	<th></th>
+			                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="task in tasks">
+                                            <td>{{task.taskname}}</td>
+                                            <td>{{task.devicename}}</td>
+                                            <td>{{task.duration}}</td>
+                                            <td>{{task.energyUsage}}</td>
+                                            <td>{{task.state}}</td>
+                                            <td>{{parseDate(task.startTime)}}</td>
+                                     
+                                            <td>                                           
+	                                        	<uib-timepicker ng-model="task.earliestStartTime" hour-step="1" minute-step="15" show-meridian="false"></uib-timepicker>
+					        				</td>
+											<td>
+										        <p class="input-group">
+										          <input type="text" class="form-control" show-button-bar="false" uib-datepicker-popup ng-model="task.latestFinishTime" is-open="task.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+										          <span class="input-group-btn">
+										            <button type="button" class="btn btn-default" ng-click="open(task)"><i class="glyphicon glyphicon-calendar"></i></button>
+										          </span>
+										        </p>
+	                                        	<uib-timepicker ng-model="task.latestFinishTime" hour-step="1" minute-step="15" show-meridian="false"></uib-timepicker>
+					        				</td>
+											<td>
+                                            	<button type="submit" class="btn btn-success" ng-click="plan(task)">Plan</button>
+											</td>
+                                        </tr>
+          
+                                    </tbody>
+                                </table>
+                               		
+                            </div>
+                            <!-- /.table-responsive -->
+                            
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+

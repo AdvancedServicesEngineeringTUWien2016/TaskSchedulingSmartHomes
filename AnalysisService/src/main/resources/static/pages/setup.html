@@ -1,0 +1,160 @@
+<div id="page-wrapper">
+ 	<div class="col-md-9">
+        <div class="alert alert-danger" style="margin-bottom: 0px;" ng-show="$root.error"><strong>Error: </strong>{{$root.errorMessage}}</div>
+        <div class="alert alert-info" style="margin-bottom: 0px;" ng-show="$root.info"><strong>Info: </strong>{{$root.infoMessage}}</div>
+    </div>
+	
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Setup</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+            	
+               
+             
+               <div class="col-xs-5 .col-md-4">
+                   <div class="panel panel-success">
+                   
+                   	 <div class="panel-heading">
+                           <strong>IG Plus Simulator</strong>
+                       </div>
+                       <div class="panel-body" ng-hide="!setupIGcomplete">IGPlus Setup complete!</div>
+                       <div class="panel-body" ng-hide="setupIGcomplete">
+                             <div>Address of IGPlus Simulator Service</div>
+                             <input type="text" name="igPlusServiceIP" ng-model="igPlusServiceIP">
+                             <p></p>  
+                             <div>Address of Weather Service</div>
+                             <input type="text" name="weatherServiceIP" ng-model="weatherServiceIP">
+                             <p></p>       
+                             <div>Max Energy Production (W/h)</div>
+                             <input type="number" min=0 name="maxEnergyProduction" ng-model="maxEnergyProduction">
+                             <p></p>       
+                                                  
+                             <div>Weather Accuracy Threshold</div>  
+                             <div id="accuracyThres" ng-model="accuracyThres"></div> 
+                             <p></p>
+                             <div class="panel panel-default">
+                             	<div class="panel-body">
+                             		<strong>Location</strong>
+                             	</div>
+                             	<div class="panel-body">
+	                             	<div>Longitude</div>
+	                             	<input type="text" name="lon" ng-model="lon">
+	                             	<p></p> 
+	                             	<div>Latitude</div>
+	                             	<input type="text" name="lat" ng-model="lat">
+	                             	<p></p> 	                             
+	                            </div>
+                            </div>
+                            <div>Battery Capacity (W)</div>
+                            <input type="number" min=0 name="batteryCapacity" ng-model="batteryCapacity">
+                            <p></p>       
+                            <div>Battery Load </div>
+                            <div id="batteryLoad"></div>
+                            <p></p>    
+                             
+                       </div>    
+                       <div class="panel-footer">
+                            <button type="submit" class="btn btn-success" ng-click="setupIG()">Save Setup</button>
+                       </div>   
+                   </div>
+                                     
+                       
+               </div>
+               <div class="col-xs-5 .col-md-4">
+                   <div class="panel panel-success">
+                   
+                   	 <div class="panel-heading">
+                           <strong>Analysis Service</strong>
+                       </div>
+                       <div class="panel-body" ng-hide="!setupAnalysiscomplete">
+                       Analysis Setup complete!
+                       </div>
+                       <div class="panel-body" ng-hide="setupAnalysiscomplete">
+                       		<div class="panel panel-default">
+                             	<div class="panel-body">
+                             		<strong>Weather Service</strong>
+                             	</div>
+                             	<div class="panel-body">
+	                             	<div>Address of Weather Service</div>
+                             		<input type="text" name="weatherServiceIP" ng-model="weatherServiceIP">
+                             		<p></p>       
+                             		<div>Weather Accuracy Threshold</div>  
+                             		<div id="accuracyThresAnal"></div> 
+                            		 <p></p> 	                             
+	                            </div>
+                            </div>
+                       
+                       		
+                       		<div class="panel panel-default">
+                             	<div class="panel-body">
+                             		<strong>Home Configuration</strong>
+                             	</div>
+                             	<div class="panel-body">
+	                             	<div>Address of IG Plus Service</div>
+                             		<input type="text" name="igPlusServiceIP" ng-model="igPlusServiceIP">
+                             		<p></p> 
+                             		<div>Address of Home Automation System</div>
+                            		<input type="text" name="automationServiceIP" ng-model="automationServiceIP">
+                             		<p></p>  
+                             		<div>Address of Energy Price Service</div>
+                             		<input type="text" name="priceServiceIP" ng-model="priceServiceIP">
+                             		<p></p>
+                             		<div>Longitude</div>
+	                             	<input type="text" name="lon" ng-model="lon">
+	                             	<p></p> 
+	                             	<div>Latitude</div>
+	                             	<input type="text" name="lat" ng-model="lat">
+	                             	<div>Premium User?</div>
+	                             	<select ng-model="PremiumUser"> 
+	                             	<option value="no">No (Free!)</option>
+	                             	<option value="yes">Yes (4.99$ per month)</option>
+		                 			</select>
+	                             	<p></p> 	
+	                             	 
+                             			                             
+	                            </div>
+                            </div>
+                       </div>
+                            
+                       <div class="panel-footer">
+                            <button type="submit" class="btn btn-success" ng-click="setupAnalysis()">Save Setup</button>
+                       </div>   
+                   </div>  
+                </div>
+                <div class="col-xs-5 .col-md-4">
+                    <div class="panel panel-success">
+                    
+                    	 <div class="panel-heading">
+                            <strong>Weather Service</strong>
+                        </div>
+                        <div class="panel-body" ng-hide="!setupWeathercomplete">Weather setup complete!
+                        </div>
+                        <div class="panel-body" ng-hide="setupWeathercomplete">
+                                
+                              <div>Address of Weather Service</div>
+                              <input type="text" name="weatherServiceIP" ng-model="weatherServiceIP">
+                              <p></p>    
+                              <div>Min-Max Accuracy</div>
+                              <div id="weatherAccuracy"></div>
+                              <p></p>
+                              <div>Simulate</div>
+						      <input type="checkbox" ng-model="simulate" >
+						      </div>                          
+                              
+                        </div>    
+                        <div class="panel-footer">
+                             <button type="submit" class="btn btn-success" ng-click="setupWeather()">Save Setup</button>
+                        </div>  
+                        
+                    </div>                   
+                        
+                </div> 
+                           
+			</div>
+            
+    </div>
+    <!-- /#wrapper -->
